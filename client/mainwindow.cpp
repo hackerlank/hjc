@@ -44,9 +44,9 @@ void MainWindow::on_pushButton_pressed()
 
     model->setColumnCount(2);
 
-    model->setHeaderData(0,Qt::Horizontal,QString::fromLocal8Bit("id"));
+    model->setHeaderData(0,Qt::Horizontal,("id"));
 
-    model->setHeaderData(1,Qt::Horizontal,QString::fromLocal8Bit("name"));
+    model->setHeaderData(1,Qt::Horizontal,("name"));
 
     ui->tableView->setModel(model);
 
@@ -57,7 +57,7 @@ void MainWindow::on_pushButton_pressed()
          model->item(i,0)->setForeground(QBrush(QColor(255, 0, 0)));
             //设置字符位置
          model->item(i,0)->setTextAlignment(Qt::AlignCenter);
-         model->setItem(i,1,new QStandardItem(QString::fromLocal8Bit("哈哈")));
+         model->setItem(i,1,new QStandardItem(("哈哈")));
      }
 
 }

@@ -19,4 +19,5 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-DISTFILES +=
+DISTFILES += \
+    ../QTÖªÊ¶µã.txt
