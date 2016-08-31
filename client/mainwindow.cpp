@@ -33,6 +33,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::loadPlayer()
 {
+	/*
     for(int i=0; i<10; ++i)
     {
         //std::stringstream str;
@@ -40,6 +41,15 @@ void MainWindow::loadPlayer()
         PlayerInfo* newPlayer = new PlayerInfo(i, "name");
         m_player_list.push_back(newPlayer);
     }
+	*/
+
+	std::vector<Player*>* playerList = m_player_manager->getPlayerList();
+	for (std::vector<Player*>::iterator iter = playerList->begin(); iter != playerList->end(); ++iter)
+	{
+		Player* existPlayer = *iter;
+		PlayerInfo* newPlayer = new PlayerInfo(existPlayer->id, existPlayer->name);
+		m_player_list.push_back(newPlayer);
+	}
 
 }
 
@@ -47,13 +57,7 @@ void MainWindow::setPlayerManager(PlayerManager* mgr)
 {
     m_player_manager = mgr;
 
-    std::vector<Player*>* playerList = mgr->getPlayerList();
-    for(std::vector<Player*>::iterator iter = playerList->begin(); iter != playerList->end(); ++iter)
-    {
-        Player* existPlayer = *iter;
-        PlayerInfo* newPlayer = new PlayerInfo(existPlayer->id, existPlayer->name);
-        m_player_list.push_back(newPlayer);
-    }
+    
 
 }
 
@@ -71,6 +75,7 @@ void MainWindow::on_pushButton_pressed()
     model->setHeaderData(1,Qt::Horizontal,("name"));
 
     ui->tableView->setModel(model);
+
 
     int index = 0;
     for(std::vector<PlayerInfo*>::iterator iter = m_player_list.begin(); iter != m_player_list.end(); ++iter)
