@@ -2,20 +2,26 @@
 #define PLAYERMANAGER_H
 
 #include <vector>
+#include <string>
 
-class player;
+class Player;
 
 class PlayerManager
 {
 public:
     PlayerManager();
 
+    void addPlayer(std::string& name);
 
-    static PlayerManager& getInstance();
+    //static PlayerManager& getInstance();
 
+
+    std::vector<Player*>* getPlayerList();
 
 private:
-    std::vector<player*> mPlayerList;
+    //static PlayerManager* static_player;
+    int index;
+    std::vector<Player*> mPlayerList;
 };
 
 #endif // PLAYERMANAGER_H

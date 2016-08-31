@@ -7,12 +7,16 @@ namespace Ui {
 class MainWindow;
 }
 
+class create_player;
+
+class PlayerManager;
+
 class PlayerInfo
 {
 public:
     PlayerInfo(int id, std::string name);
 
-private:
+public:
     int m_id;
     std::string m_name;
 };
@@ -27,6 +31,8 @@ public:
 
     void loadPlayer();
 
+    void setPlayerManager(PlayerManager* mgr);
+
 private slots:
     void on_pushButton_pressed();
 
@@ -36,9 +42,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QDialog* m_create_dialog;
+    create_player* m_create_dialog;
 
     std::vector<PlayerInfo*> m_player_list;
+    PlayerManager* m_player_manager;
 };
 
 #endif // MAINWINDOW_H
